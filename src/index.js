@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Stage, Layer, Text } from "react-konva";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const App = () => {
+  return (
+    <Stage width={window.innerWidth} height={window.innerHeight}>
+      <Layer>
+        <Text
+          text={"Default shape rendering.\n fillAfterStrokeEnabled = false"}
+          x={50}
+          y={50}
+          fontSize={30}
+          stroke={"green"}
+          fill={"yellow"}
+          strokeWidth={3}
+        />
+        <Text
+          text={"Reversed rendering order.\nfillAfterStrokeEnabled = true"}
+          x={50}
+          y={150}
+          fontSize={30}
+          stroke={"green"}
+          fill={"yellow"}
+          strokeWidth={3}
+          fillAfterStrokeEnabled
+        />
+      </Layer>
+    </Stage>
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
